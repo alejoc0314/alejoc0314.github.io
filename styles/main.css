@@ -1,0 +1,28 @@
+body {
+    background:#f3f4f5;
+}
+
+.title {
+    font-size:24px;
+    font-style:arial;
+    color:black;
+}
+
+.subt {
+    font-size:20px;
+    font-style:arial;
+    color:black; 
+}
+
+.list {
+    font-size:18px;
+    font-style:georgia;
+    color:#757575;
+}
+
+p {
+    font-size:18px;
+    font-style:georgia;
+    color:#757575;
+}
+
