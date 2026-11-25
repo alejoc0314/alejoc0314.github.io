@@ -78,7 +78,6 @@ window.PORTFOLIO = {
       prod: { es: 'En producción', en: 'In production' },
       oss: { es: 'Open source', en: 'Open source' },
       dev: { es: 'En construcción', en: 'In progress' },
-      study: { es: 'Académico', en: 'Academic' },
       done: { es: 'Entregado', en: 'Delivered' },
     },
   },
@@ -107,10 +106,10 @@ window.PORTFOLIO = {
   },
 
   stats: [
-    { value: '4', suffix: '+', label: { es: 'años construyendo producto de punta a punta', en: 'years building product end to end' } },
     { value: '6', label: { es: 'sistemas en producción construidos o liderados desde 2025', en: 'production systems built or led since 2025' } },
     { value: { es: '1.000', en: '1,000' }, suffix: '+', label: { es: 'pruebas automatizadas respaldan los proyectos de esta página', en: 'automated tests back the projects on this page' } },
     { value: '~9', suffix: 's', label: { es: 'tarda el rollback automático cuando un despliegue falla', en: 'for automatic rollback when a deploy fails' } },
+    { value: '4', suffix: '+', label: { es: 'años construyendo producto de punta a punta', en: 'years building product end to end' } },
   ],
 
   // ───────────── proyectos ─────────────
@@ -164,6 +163,13 @@ window.PORTFOLIO = {
       ],
       stack: ['Python 3.12', 'Typer', 'Pydantic', 'Textual', 'pytest', 'Claude Code', 'Codex', 'GitHub Actions'],
       links: [{ label: { es: 'Código en GitHub', en: 'Code on GitHub' }, href: 'https://github.com/alejoc0314/umbra-engine' }],
+      shot: {
+        src: 'assets/umbra-watch.png', w: 1660, h: 995,
+        alt: {
+          es: 'Consola umbra watch: cinco tareas de la spec 035 integradas, con sus etapas, intentos, costo y la bitácora de lo que hizo cada agente.',
+          en: 'The umbra watch console: five tasks from spec 035 integrated, with their stages, attempts, cost and the log of what each agent did.',
+        },
+      },
     },
     {
       id: 'white-label', featured: true, cat: 'platform', status: 'prod', year: '2025 — 2026', org: 'Conecty',
@@ -399,24 +405,24 @@ window.PORTFOLIO = {
       stack: ['PHP', 'MySQL', 'JavaScript', 'Stripe', 'Claude Code'],
     },
     {
-      id: 'hojasana', cat: 'ai', status: 'study', year: '2026', org: 'Politécnico Grancolombiano',
+      id: 'hojasana', cat: 'ai', status: 'dev', year: '2026', org: 'Politécnico Grancolombiano',
       name: 'HojaSana',
       tagline: {
-        es: 'App móvil sin conexión que detecta roya del café con un modelo que corre en el teléfono.',
-        en: 'Offline mobile app that detects coffee leaf rust with a model running on the phone.',
+        es: 'App móvil sin conexión para detectar roya del café con un modelo que corre en el teléfono. Proyecto universitario en curso.',
+        en: 'Offline mobile app to detect coffee leaf rust with a model running on the phone. University project, in progress.',
       },
       highlights: {
         es: [
           'MobileNet afinado y exportado a TensorFlow.js: 95,9 % de exactitud sobre 680 imágenes de prueba.',
           'Mido la exactitud por fuente de datos (100 % y 87,8 %) para no esconder el caso difícil detrás del promedio.',
           'Partición por planta, no por foto, para evitar fuga entre entrenamiento y prueba.',
-          'Ruta de muestreo guiada por lote; todo funciona sin señal con Ionic y Capacitor.',
+          'El modelo ya está entrenado y medido; la app (muestreo guiado por lote, sin señal) sigue en construcción.',
         ],
         en: [
           'Fine-tuned MobileNet exported to TensorFlow.js: 95.9% accuracy on 680 test images.',
           'Accuracy is reported per data source (100% and 87.8%) so the hard case is not hidden behind the average.',
           'Split by plant, not by photo, to avoid leakage between training and test.',
-          'Guided sampling route per plot; everything works with no signal, on Ionic and Capacitor.',
+          'The model is trained and measured; the app (guided per-plot sampling, no signal needed) is still being built.',
         ],
       },
       stack: ['Ionic', 'Angular 22', 'Capacitor', 'TensorFlow.js', 'MobileNet'],

@@ -67,13 +67,15 @@
   function renderFeatured() {
     $('#featured').innerHTML = D.projects.filter((p) => p.featured).map((p) => `
       <article class="case" data-reveal>
+        ${p.shot ? `<a class="case__shot" href="${esc(p.shot.src)}" target="_blank" rel="noopener"><img src="${esc(p.shot.src)}" width="${p.shot.w}" height="${p.shot.h}" alt="${esc(L(p.shot.alt))}" loading="lazy" /></a>` : ''}
         <div class="case__main">
           <div class="case__meta">${badge(p.status)}<span>${esc(p.year)}</span><span>${esc(L(p.org))}</span></div>
           <h3 class="case__name">${esc(L(p.name))}</h3>
           <p class="case__tag">${esc(L(p.tagline))}</p>
           <p class="case__p"><b>${esc(L(D.ui['case.problem']))}</b>${esc(L(p.problem))}</p>
           <p class="case__p"><b>${esc(L(D.ui['case.solution']))}</b>${esc(L(p.solution))}</p>
-          ${list(L(p.highlights))}
+          ${list(L(p.highlights).slice(0, 3))}
+          ${L(p.highlights).length > 3 ? `<details class="fold"><summary>${esc(L(D.ui['card.more']))}</summary>${list(L(p.highlights).slice(3))}</details>` : ''}
           ${links(p.links)}
         </div>
         <aside class="case__side"><div class="side__in">
@@ -99,7 +101,7 @@
         <div class="card__meta">${badge(p.status)}<span>${esc(p.year)} · ${esc(L(p.org))}</span></div>
         <h3 class="card__name">${esc(L(p.name))}</h3>
         <p class="card__tag">${esc(L(p.tagline))}</p>
-        <details><summary>${esc(L(D.ui['card.more']))}</summary>${list(L(p.highlights))}${links(p.links)}</details>
+        <details class="fold"><summary>${esc(L(D.ui['card.more']))}</summary>${list(L(p.highlights))}${links(p.links)}</details>
         ${chips(p.stack)}
       </article>`).join('');
   }

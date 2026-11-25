@@ -120,8 +120,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tool:hover { border-color: var(--accent); background: var(--surface-2); }
 
 @media (max-width: 860px) {
-  .nav__links { display: none; }
+  :root { --nav-h: 96px; }
+  .nav { height: auto; flex-wrap: wrap; row-gap: 0; padding-top: 12px; }
   .nav__links + .nav__tools { margin-left: auto; }
+  .nav__links { order: 3; width: 100%; margin: 6px calc(var(--pad) * -1) 0; padding: 0 calc(var(--pad) - 12px) 8px; overflow-x: auto; scrollbar-width: none; }
+  .nav__links::-webkit-scrollbar { display: none; }
+  .nav__links a { white-space: nowrap; }
 }
 
 /* ---------- hero ---------- */
@@ -263,6 +267,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   transition: border-color .3s;
 }
 .case:hover { border-color: var(--line-2); }
+.case__shot { grid-column: 1 / -1; display: block; border-bottom: 1px solid var(--line); background: #1e1e2e; }
+.case__shot img { display: block; width: 100%; height: auto; }
 .case__main { padding: clamp(24px, 3.4vw, 44px); }
 .case__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; font: 400 12px/1 var(--font-mono); color: var(--fg-3); letter-spacing: .04em; }
 .case__name { margin-top: 18px; font: 700 clamp(1.6rem, 3vw, 2.3rem)/1.08 var(--font-display); letter-spacing: -.03em; }
@@ -333,14 +339,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .card__meta span { white-space: nowrap; }
 .card__name { margin-top: 16px; font: 700 1.3rem/1.15 var(--font-display); letter-spacing: -.02em; }
 .card__tag { margin-top: 8px; font-size: 15px; color: var(--fg-2); }
-.card details { margin-top: 14px; }
-.card summary {
+.fold { margin-top: 14px; }
+.fold summary {
   cursor: pointer; list-style: none; width: fit-content;
   font: 500 12.5px/1 var(--font-mono); color: var(--accent);
 }
-.card summary::-webkit-details-marker { display: none; }
-.card summary::after { content: ' +'; }
-.card details[open] summary::after { content: ' −'; }
+.fold summary::-webkit-details-marker { display: none; }
+.fold summary::after { content: ' +'; }
+.fold[open] summary::after { content: ' −'; }
+.case .fold { margin-top: 18px; }
+.case .fold .hl { margin-top: 14px; }
 .card .hl { margin-top: 14px; font-size: 14px; }
 .card .chips { margin-top: auto; padding-top: 20px; }
 .card .links { margin-top: 16px; }
