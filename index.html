@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alejandro Cañas Arango · AI &amp; Automation Engineer</title>
+  <meta name="description" content="Alejandro Cañas Arango — AI & Automation Engineer y desarrollador full-stack en Medellín. Agentes, MCP y automatización en sistemas que ya están en producción." />
+  <meta name="author" content="Alejandro Cañas Arango" />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Alejandro Cañas Arango · AI & Automation Engineer" />
+  <meta property="og:description" content="IA aplicada en sistemas que ya están en producción: agentes, MCP, automatización y desarrollo full-stack." />
+  <meta property="og:url" content="https://alejoc0314.github.io/" />
+  <meta property="og:image" content="https://alejoc0314.github.io/assets/og.png" />
+  <link rel="canonical" href="https://alejoc0314.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Tema antes del primer pintado, para que no parpadee -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio.theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip" href="#work" data-i18n="a11y.skip">Saltar al contenido</a>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="Inicio">AC<span class="accent">_</span></a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#work" data-i18n="nav.work">Proyectos</a>
+      <a href="#method" data-i18n="nav.method">Cómo trabajo</a>
+      <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+      <a href="#stack" data-i18n="nav.stack">Stack</a>
+      <a href="#about" data-i18n="nav.about">Sobre mí</a>
+      <a href="#contact" data-i18n="nav.contact">Contacto</a>
+    </nav>
+    <div class="nav__tools">
+      <button id="toggle-lang" class="tool" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
+      <button id="toggle-theme" class="tool" type="button" aria-label="Cambiar tema / Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero__text">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Alejandro Cañas Arango · Medellín, Colombia</span></p>
+        <h1 class="hero__title" data-i18n="hero.title">Llevo la IA a sistemas que <em>ya están en producción</em>.</h1>
+        <p class="hero__lede" data-i18n="hero.lede"></p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#work" data-i18n="hero.cta.work">Ver proyectos</a>
+          <a class="btn" href="#contact" data-i18n="hero.cta.contact">Hablemos</a>
+          <a class="btn btn--ghost" href="https://github.com/alejoc0314" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <aside class="runlog" id="runlog" aria-label="Demo"></aside>
+    </section>
+
+    <section class="stats wrap" id="stats" aria-label="Cifras"></section>
+
+    <!-- 01 PROYECTOS -->
+    <section class="section wrap" id="work">
+      <header class="head">
+        <span class="head__num">01</span>
+        <h2 data-i18n="work.title">Proyectos</h2>
+        <p class="head__sub" data-i18n="work.sub"></p>
+      </header>
+      <div id="featured" class="featured"></div>
+      <div class="more">
+        <h3 class="more__title" data-i18n="work.more">Más trabajo</h3>
+        <div class="filters" id="filters" role="group" aria-label="Filtrar proyectos"></div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <!-- 02 MÉTODO -->
+    <section class="section wrap" id="method">
+      <header class="head">
+        <span class="head__num">02</span>
+        <h2 data-i18n="method.title">Cómo trabajo</h2>
+        <p class="head__sub" data-i18n="method.sub"></p>
+      </header>
+      <div id="principles" class="principles"></div>
+    </section>
+
+    <!-- 03 EXPERIENCIA -->
+    <section class="section wrap" id="experience">
+      <header class="head">
+        <span class="head__num">03</span>
+        <h2 data-i18n="exp.title">Experiencia</h2>
+        <p class="head__sub" data-i18n="exp.sub"></p>
+      </header>
+      <div id="jobs" class="jobs"></div>
+    </section>
+
+    <!-- 04 STACK -->
+    <section class="section wrap" id="stack">
+      <header class="head">
+        <span class="head__num">04</span>
+        <h2 data-i18n="stack.title">Stack</h2>
+        <p class="head__sub" data-i18n="stack.sub"></p>
+      </header>
+      <div id="stack-grid" class="stack"></div>
+    </section>
+
+    <!-- 05 FORMACIÓN -->
+    <section class="section wrap" id="education">
+      <header class="head">
+        <span class="head__num">05</span>
+        <h2 data-i18n="edu.title">Formación</h2>
+      </header>
+      <div id="edu" class="edu"></div>
+    </section>
+
+    <!-- 06 SOBRE MÍ -->
+    <section class="section wrap" id="about">
+      <header class="head">
+        <span class="head__num">06</span>
+        <h2 data-i18n="about.title">Sobre mí</h2>
+      </header>
+      <div class="about">
+        <div class="about__body" id="about-body"></div>
+        <dl class="about__off" id="about-off"></dl>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact wrap" id="contact">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+      <h2 class="contact__title" data-i18n="contact.title"></h2>
+      <p class="contact__lede" data-i18n="contact.lede"></p>
+      <a class="contact__mail" href="mailto:alejoc0314@gmail.com">alejoc0314@gmail.com <span aria-hidden="true">↗</span></a>
+      <div class="contact__links">
+        <a href="https://www.linkedin.com/in/alejoc0314" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/alejoc0314" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <span data-i18n="foot.left"></span>
+    <a href="#top" data-i18n="foot.top">Volver arriba ↑</a>
+  </footer>
+
+  <noscript><p style="padding:24px;font-family:sans-serif">Este sitio necesita JavaScript para mostrar los proyectos. Contacto: alejoc0314@gmail.com · github.com/alejoc0314</p></noscript>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
