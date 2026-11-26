@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto · Alejandro Cañas</title>
+  <meta name="description" content="Escríbele a Alejandro Cañas Arango: cuéntale qué necesitas y te responde por correo." />
+  <meta name="author" content="Alejandro Cañas Arango" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contacto · Alejandro Cañas" />
+  <meta property="og:url" content="https://alejoc0314.github.io/contacto.html" />
+  <meta property="og:description" content="Cuéntale qué necesitas y te responde por correo." />
+  <meta property="og:image" content="https://alejoc0314.github.io/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://alejoc0314.github.io/contacto.html" />
+  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
+
+  <!-- Antes del primer pintado: marca que hay JS y activa el telón (corto si se viene de otra página del sitio) -->
+  <script>
+    (function () {
+      var d = document.documentElement, nav = false;
+      try { nav = !!sessionStorage.getItem('portfolio.nav'); } catch (e) {}
+      // telón corto si se viene de otra página del sitio; completo (con los saludos) en la primera visita
+      d.className = 'js pre-on' + (nav ? ' pre-short' : '');
+      // seguro: si el script principal falla, a los 7 s se quita el telón y la página queda visible, sin animaciones
+      setTimeout(function () {
+        if (window.portfolioReady) return;
+        d.className = '';
+        if (document.body) document.body.classList.remove('is-loading');
+      }, 7000);
+    })();
+  </script>
+
+  <!-- la fuente vive en el sitio y se precarga: así el texto no se pinta primero con otra letra -->
+  <link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=20261126v" />
+</head>
+
+<body data-page="contact">
+  <a class="skip" href="#contact-form" data-i18n="skip">Saltar al contenido</a>
+
+  <div class="pre" id="pre" aria-hidden="true" hidden>
+    <div class="pre__word"><span class="pre__dot"></span><span id="pre-word">Contacto</span></div>
+    <svg class="pre__curve" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 Q 50 200 100 0 Z" /></svg>
+    <svg class="pre__curve pre__curve--top" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 Q 50 -100 100 100 Z" /></svg>
+  </div>
+
+  <!-- viniendo de otra página del sitio, el telón ya trae la palabra puesta desde el primer pintado -->
+  <script>try { var w = sessionStorage.getItem('portfolio.nav'); if (w) document.getElementById('pre-word').textContent = w; } catch (e) {}</script>
+
+  <div class="menu-btn-wrap">
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menú" data-magnetic="0.45"><span class="menu-btn__bars"></span></button>
+  </div>
+  <div class="menu-back" id="menu-back"></div>
+  <aside class="menu" id="menu" aria-label="Menú" tabindex="-1" inert>
+    <svg class="menu__curve" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M100 0 Q -100 50 100 100 Z" /></svg>
+    <div class="menu__in">
+      <div>
+        <p class="menu__label" data-i18n="menu.nav">Navegación</p>
+        <ul class="menu__links">
+          <li><a href="index.html" data-i18n="menu.home" data-magnetic="0.18">Inicio</a></li>
+          <li><a href="trabajo.html" data-i18n="nav.work" data-magnetic="0.18">Trabajo</a></li>
+          <li><a href="index.html#sobre-mi" data-i18n="nav.about" data-magnetic="0.18">Sobre mí</a></li>
+          <li><a href="#inicio" class="is-current" data-i18n="nav.contact" data-magnetic="0.18">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="menu__label" data-i18n="menu.social">Redes</p>
+        <div class="menu__social">
+          <a href="https://github.com/alejoc0314" target="_blank" rel="noopener" data-magnetic="0.25">GitHub</a>
+          <a href="https://www.linkedin.com/in/alejoc0314" target="_blank" rel="noopener" data-magnetic="0.25">LinkedIn</a>
+          <button class="js-lang" type="button" aria-label="EN · Cambiar idioma / Switch language" data-magnetic="0.25">EN</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CABECERA -->
+  <header class="phead phead--ink" id="inicio">
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__brand back" href="index.html" data-magnetic="0.2"><span aria-hidden="true">←</span> <span data-i18n="back.home">Volver al inicio</span></a>
+      <div class="nav__links">
+        <a href="trabajo.html" data-i18n="nav.work" data-magnetic="0.3">Trabajo</a>
+        <button class="nav__lang js-lang" type="button" aria-label="EN · Cambiar idioma / Switch language" data-magnetic="0.3">EN</button>
+      </div>
+    </nav>
+    <div class="phead__in">
+      <h1 class="phead__title rise">
+        <img class="closing__avatar" src="assets/avatar.webp" width="120" height="120" alt="" />
+        <span data-i18n="c.title">Cuéntame qué<br>tienes en mente</span>
+      </h1>
+    </div>
+  </header>
+
+  <main class="contact">
+    <!-- El envío lo hace app.js sin salir de la página (Web3Forms reenvía el mensaje por correo).
+         La llave es pública por diseño: solo sirve para enviar a ese buzón. Sin JavaScript, el formulario se envía igual. -->
+    <form class="cform" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="d948929d-f5f4-4f97-9a39-559ffbec9562" />
+      <input type="hidden" name="subject" value="Nuevo mensaje desde el portafolio" />
+      <input type="hidden" name="from_name" value="Portafolio" />
+      <!-- campo trampa: las personas no lo ven; si llega marcado, es un robot -->
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none" />
+
+      <label class="field">
+        <span class="field__n">01</span><span class="field__q" data-i18n="c.q1">¿Cómo te llamas?</span>
+        <input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="Tu nombre *" data-i18n-ph="c.p1" />
+      </label>
+      <label class="field">
+        <span class="field__n">02</span><span class="field__q" data-i18n="c.q2">¿Cuál es tu correo?</span>
+        <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="tu@correo.com *" data-i18n-ph="c.p2" />
+      </label>
+      <label class="field">
+        <span class="field__n">03</span><span class="field__q" data-i18n="c.q3">¿De qué empresa o proyecto vienes?</span>
+        <input type="text" name="company" maxlength="160" autocomplete="organization" placeholder="Opcional" data-i18n-ph="c.p3" />
+      </label>
+      <label class="field">
+        <span class="field__n">04</span><span class="field__q" data-i18n="c.q4">¿En qué te puedo ayudar?</span>
+        <input type="text" name="service" maxlength="200" placeholder="Agentes de IA, automatizaciones, una plataforma…" data-i18n-ph="c.p4" />
+      </label>
+      <label class="field">
+        <span class="field__n">05</span><span class="field__q" data-i18n="c.q5">Tu mensaje</span>
+        <textarea name="message" required maxlength="5000" rows="3" placeholder="Hola Alejandro, quiero que me ayudes con… *" data-i18n-ph="c.p5"></textarea>
+      </label>
+
+      <div class="closing__rule cform__rule">
+        <button class="round round--accent" type="submit" data-magnetic><span data-i18n="c.send">Enviar</span></button>
+      </div>
+      <p class="cform__status" id="contact-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <aside class="cside" data-stagger>
+      <div style="--n:0">
+        <h2 data-i18n="c.side.contact">Datos de contacto</h2>
+        <a href="mailto:alejoc0314@gmail.com">alejoc0314@gmail.com</a>
+      </div>
+      <div style="--n:1">
+        <h2 data-i18n="c.side.where">Ubicación</h2>
+        <p>Medellín, Colombia</p>
+      </div>
+      <div style="--n:2">
+        <h2 data-i18n="menu.social">Redes</h2>
+        <a href="https://github.com/alejoc0314" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/alejoc0314" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="closing__foot cfoot">
+    <div class="foot__group">
+      <div><small data-i18n="foot.version.k">Versión</small><span data-i18n="foot.version.v">2026 © Edición</span></div>
+      <div><small data-i18n="foot.time.k">Hora local</small><span id="clock">—</span></div>
+    </div>
+    <div class="foot__right"><small data-i18n="foot.made.k">Diseñado en</small><span data-i18n="foot.made.v">UMBRA Design, con agentes</span></div>
+  </footer>
+
+  <noscript><p style="padding:24px;font-family:sans-serif">Contacto: alejoc0314@gmail.com · github.com/alejoc0314</p></noscript>
+
+  <script src="scripts/vendor/lenis.min.js"></script>
+  <script src="scripts/data.js?v=20261126v"></script>
+  <script src="scripts/app.js?v=20261126v"></script>
+</body>
+</html>
