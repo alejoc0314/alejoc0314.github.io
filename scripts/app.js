@@ -176,9 +176,12 @@
   let lastY = window.scrollY, dir = 1, shift = 0, scrolled = false;
 
   /** Medidas que no cambian con el scroll: se toman al cargar y al redimensionar. */
+  const room = new Map();                     // cuánto puede deslizarse a la derecha cada botón sin salirse de su línea
   function measure() {
     heroH = hero.offsetHeight;
     unit = track ? track.firstElementChild.offsetWidth : 0;
+    // offsetLeft no cuenta el `translate`, así que la medida no depende de dónde vaya el deslizamiento
+    $$('[data-drift]').forEach((el) => room.set(el, Math.max(0, el.parentElement.clientWidth - el.offsetLeft - el.offsetWidth)));
   }
 
   /** Tras pintar: qué elementos se mueven con el scroll. */
@@ -221,7 +224,10 @@
         closeBtn.style.translate = `${(-left * 0.1).toFixed(1)}px 0`;                // el botón se desliza a su sitio
       } else if (el.dataset.drift) {
         // botón sobre la línea: se desliza por ella hacia la derecha al bajar (data-drift = cuánto), en su sitio al centro
-        el.style.translate = `${(-t * vh * +el.dataset.drift).toFixed(1)}px 0`;
+        // con tope: nunca pasa del final de la línea (en móvil el botón ya está pegado al final, así que solo llega y se queda).
+        // Sin tope se salía de la pantalla, ensanchaba la página y sacaba de sitio al botón del menú.
+        const reach = vh * 0.5 * +el.dataset.drift;
+        el.style.translate = `${clamp(-t * vh * +el.dataset.drift, -reach, Math.min(reach, room.get(el) || 0)).toFixed(1)}px 0`;
       } else {
         // imagen de proyecto: se desplaza y, si es foto, respira un poco. Al diagrama (vectorial) no se le toca
         // la escala: redibujarlo en cada cuadro es carísimo.

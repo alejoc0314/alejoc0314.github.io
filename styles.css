@@ -36,7 +36,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; } /* clip: nada puede ensanchar la página (en móvil eso descoloca lo que va fijo, como el botón del menú) */
 body {
   margin: 0; background: var(--white); color: var(--ink);
   font: 400 17px/1.5 var(--font);
@@ -323,7 +323,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .closing__foot small { display: block; margin-bottom: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
 .foot__right { text-align: right; }
 @media (max-width: 820px) {
-  .closing__rule { margin-bottom: calc(var(--round) / 2 + 28px); }
+  /* arriba: medio botón más un respiro, para que no se monte sobre el título */
+  .closing__rule { margin-top: calc(var(--round) / 2 + 20px); margin-bottom: calc(var(--round) / 2 + 28px); }
   .closing__rule .round, .intro__rule .round { right: 0; }
   .foot__right { text-align: left; }
 }
